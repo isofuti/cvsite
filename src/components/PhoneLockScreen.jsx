@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { MessageSquare, ShieldAlert } from 'lucide-react';
 import { playSound } from '../utils/sounds';
+import bgUrl from '../assets/bg.jpg';
 
 export const PhoneLockScreen = ({ onUnlock }) => {
   const [time, setTime] = useState(new Date());
@@ -39,7 +40,7 @@ export const PhoneLockScreen = ({ onUnlock }) => {
       className="wp-lockscreen"
       style={{
         y,
-        backgroundImage: `url('/bg.jpg')`, // Reuse background
+        backgroundImage: `url(${bgUrl})`, // Reuse background
       }}
       drag="y"
       dragConstraints={{ top: -1000, bottom: 0 }}
