@@ -282,7 +282,7 @@ export const PhoneInterface = () => {
                       <div className="wp-list-subtitle">{i18n.language === 'ru' ? 'Февраль 2026 — н.в.' : 'Feb 2026 — Present'}</div>
                       <h3 style={{ fontSize: '18px', fontWeight: 600, marginTop: '4px' }}>Tool-Kit</h3>
                       <p style={{ fontSize: '12px', color: 'var(--wp-accent-light)', margin: '4px 0 12px 0' }}>{t('toolkit_role')}</p>
-                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#ccc' }}>
+                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#ccc', whiteSpace: 'pre-line' }}>
                         {t('toolkit_desc')}
                       </p>
                     </div>
@@ -298,17 +298,17 @@ export const PhoneInterface = () => {
                         <div>
                           <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)' }}>2025 — 2026</div>
                           <strong style={{ fontSize: '14px', color: '#fff' }}>{t('daynet_dev_role')}</strong>
-                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px' }}>{t('daynet_dev_desc')}</p>
+                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px', whiteSpace: 'pre-line' }}>{t('daynet_dev_desc')}</p>
                         </div>
                         <div>
                           <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)' }}>2024 — 2025</div>
                           <strong style={{ fontSize: '14px', color: '#fff' }}>{t('daynet_senior_role')}</strong>
-                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px' }}>{t('daynet_senior_desc')}</p>
+                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px', whiteSpace: 'pre-line' }}>{t('daynet_senior_desc')}</p>
                         </div>
                         <div>
                           <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)' }}>2023 — 2024</div>
                           <strong style={{ fontSize: '14px', color: '#fff' }}>{t('daynet_junior_role')}</strong>
-                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px' }}>{t('daynet_junior_desc')}</p>
+                          <p style={{ fontSize: '12px', color: '#ccc', marginTop: '2px', whiteSpace: 'pre-line' }}>{t('daynet_junior_desc')}</p>
                         </div>
                       </div>
                     </div>
@@ -322,7 +322,7 @@ export const PhoneInterface = () => {
                       <div className="wp-list-subtitle">2021 — 2023</div>
                       <h3 style={{ fontSize: '18px', fontWeight: 600, marginTop: '4px' }}>Freelance</h3>
                       <p style={{ fontSize: '12px', color: 'var(--wp-accent-light)', margin: '4px 0 12px 0' }}>{t('freelance_role')}</p>
-                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#ccc' }}>
+                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#ccc', whiteSpace: 'pre-line' }}>
                         {t('freelance_desc')}
                       </p>
                     </div>
