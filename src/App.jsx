@@ -223,7 +223,7 @@ function App() {
                   <strong style={{ fontSize: '15px', color: '#000' }}>{t('daynet_dev_role')}</strong>
                   <span style={{ fontSize: '12px', color: '#888', fontWeight: 500 }}>2025 — 2026</span>
                 </div>
-                <p style={{ fontSize: '13px', margin: 0 }}>{t('daynet_dev_desc')}</p>
+                <p style={{ fontSize: '13px', margin: 0, whiteSpace: 'pre-line' }}>{t('daynet_dev_desc')}</p>
               </div>
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', left: '-27px', top: '4px', width: '12px', height: '12px', borderRadius: '50%', background: '#888', border: '2px solid #fff' }} />
@@ -231,7 +231,7 @@ function App() {
                   <strong style={{ fontSize: '15px', color: '#333' }}>{t('daynet_senior_role')}</strong>
                   <span style={{ fontSize: '12px', color: '#888', fontWeight: 500 }}>2024 — 2025</span>
                 </div>
-                <p style={{ fontSize: '13px', margin: 0 }}>{t('daynet_senior_desc')}</p>
+                <p style={{ fontSize: '13px', margin: 0, whiteSpace: 'pre-line' }}>{t('daynet_senior_desc')}</p>
               </div>
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', left: '-27px', top: '4px', width: '12px', height: '12px', borderRadius: '50%', background: '#ccc', border: '2px solid #fff' }} />
@@ -239,7 +239,7 @@ function App() {
                   <strong style={{ fontSize: '15px', color: '#555' }}>{t('daynet_junior_role')}</strong>
                   <span style={{ fontSize: '12px', color: '#888', fontWeight: 500 }}>2023 — 2024</span>
                 </div>
-                <p style={{ fontSize: '13px', margin: 0 }}>{t('daynet_junior_desc')}</p>
+                <p style={{ fontSize: '13px', margin: 0, whiteSpace: 'pre-line' }}>{t('daynet_junior_desc')}</p>
               </div>
             </div>
           </div>
