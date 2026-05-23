@@ -1,0 +1,42 @@
+[
+  {
+    "id": "post_1779522787493",
+    "title_ru": "dsfdffsdfsdf",
+    "title_en": "gdfhdghaerte4r",
+    "text_ru": "afgsdfggrsdfgdfg",
+    "text_en": "afgdfgsdfgsdddfgdfgs",
+    "date": "23.05.2026",
+    "image": "/blog/default.jpg",
+    "category": "Theory"
+  },
+  {
+    "id": "post_1",
+    "title_ru": "Почему Top of Mind важнее подсказанной узнаваемости?",
+    "title_en": "Why Top of Mind is More Critical Than Aided Awareness",
+    "text_ru": "В маркетинге есть классический парадокс. Бренд электроники или оборудования могут знать 60% аудитории, если показать им логотип (подсказанная узнаваемость). Но когда у них возникает реальная потребность, первым делом они вспоминают конкурента. Это и есть разница между спонтанным знанием и Top of Mind.\n\nTop of Mind — это первый бренд, который всплывает в голове потребителя при возникновении потребности. Если этот показатель равен нулю, ваш бренд пассивен. Именно это мы обнаружили в недавнем исследовании: подсказанная узнаваемость бренда составляла 56%, а Top of Mind — меньше 1%!\n\nЧто это значит для бизнеса? Потребители знают вас, но не покупают вас первыми. Выход — перераспределять бюджеты с мелкого перформанса на охватные кампании, медийную рекламу и выстраивание прочных эмоциональных ассоциаций.",
+    "text_en": "There is a classic marketing paradox: a brand can have 60% awareness when prompted with a logo (aided awareness), yet when a customer needs to buy a product, they recall a competitor first. This is the difference between active recall (Top of Mind) and passive recognition.\n\nTop of Mind is the very first brand that enters a consumer's head when a need arises. If this is zero, your brand is passive. In our recent brand study, we found aided awareness was 56%, but Top of Mind was less than 1%!\n\nFor business, this means passive knowledge with zero active recall. The solution is shifting budgets from granular performance to broad reach channels (TV, digital video) to build strong top-of-mind associations.",
+    "date": "15.05.2026",
+    "image": "/blog/default.jpg",
+    "category": "Theory"
+  },
+  {
+    "id": "post_2",
+    "title_ru": "Автоматизация B2B-маркетинга: Python против рутины",
+    "title_en": "B2B Marketing Automation: Python vs Routine",
+    "text_ru": "Многие маркетологи тратят до 40% рабочего времени на ручные выгрузки из рекламных кабинетов, парсинг отзывов и копирование данных в Excel. Но эту рутину можно автоматизировать за пару часов с помощью простого стека: Python + SQL + BI.\n\nС помощью скрипта на Python можно стучаться в API соцмедиа или Brand Analytics, выгружать тысячи упоминаний, очищать их от спама с помощью библиотек разметки тональности (NLP) и складировать в базу ClickHouse. Дальше подключаем Yandex DataLens или Tableau — и у вас готов автообновляемый дашборд воронки и репутации.\n\nЭто не просто экономит время — это даёт бизнесу возможность принимать решения на основе реальных данных (Data-Driven), а не интуиции руководства. Начинайте автоматизировать маленькие рутинные задачи, и вскоре вы сможете перестроить работу всего маркетингового отдела.",
+    "text_en": "Many marketers spend up to 40% of their working hours manually exporting logs, parsing reviews, and copying data into Excel. However, this routine can be automated in a few hours using a simple stack: Python + SQL + BI.\n\nUsing a Python script, you can fetch data from social listening APIs (like Brand Analytics), clean up spam with NLP libraries, and store the structured data in ClickHouse. Then, connect Yandex DataLens or Tableau, and you get a real-time updating dashboard of your funnel and reputation.\n\nThis doesn't just save time—it empowers businesses to make Data-Driven decisions based on raw data rather than intuition. Start by automating small tasks, and soon you'll transform the entire marketing team.",
+    "date": "10.05.2026",
+    "image": "/blog/default.jpg",
+    "category": "Analytics"
+  },
+  {
+    "id": "post_3",
+    "title_ru": "ABM-стратегия на практике: Как работать с крупным чеком",
+    "title_en": "ABM Strategy in Practice: Scaling Enterprise Deals",
+    "text_ru": "Account-Based Marketing (ABM) — это подход к маркетингу, когда мы относимся к каждой конкретной компании-клиенту как к отдельному рынку. В B2B со средним чеком от 4 млн рублей классическая контекстная реклама «на всех» не работает. Нужна ювелирная точность.\n\nКак мы запускали ABM в Tool-Kit:\n1. Сформировали список из 100 ключевых enterprise-аккаунтов.\n2. Выявили ЛПР (лиц, принимающих решения): IT-директоров, директоров по развитию.\n3. Создали персонализированный контент под их конкретные боли и запустили таргетированную рекламу точечно на сотрудников этих компаний.\n\nРезультат: первые квалифицированные лиды (SQL) от крупнейших игроков рынка уже через 3 месяца. Для сложных продуктов ABM — это единственный способ пробить стену безразличия крупных корпораций.",
+    "text_en": "Account-Based Marketing (ABM) is a strategic approach where you treat an individual target account as its own market. In B2B marketing with average checks exceeding 4M RUB, generic ads fail. You need surgical precision.\n\nHow we launched ABM at Tool-Kit:\n1. Built a target list of 100 enterprise accounts.\n2. Mapped the buying committee: CTOs, CIOs, and growth heads.\n3. Designed hyper-targeted content addressing their exact pain points and launched micro-targeted ads directly to employees at those firms.\n4. Initiated direct outbound sequences aligned with marketing touches.\n\nResult: first qualified enterprise SQLs within 3 months. For complex enterprise products, ABM is the ultimate way to breach corporate walls.",
+    "date": "05.05.2026",
+    "image": "/blog/default.jpg",
+    "category": "Marketing"
+  }
+]
