@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Briefcase, Code, FileDown, MessageSquare, Gamepad2, Languages, BarChart3, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { playSound } from '../utils/sounds';
+import avatarUrl from '../assets/avatar.jpg';
 
 export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
   const { t, i18n } = useTranslation();
@@ -70,7 +71,7 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
           <div className={`wp-tile-flipper`} style={{ transform: isFlipped ? 'rotateY(180deg)' : 'none' }}>
             {/* Front Side */}
             <div className="wp-tile-front wp-tile-content">
-              <div className="wp-tile-wide-avatar" style={{ backgroundImage: "url('/avatar.jpg')" }} />
+              <div className="wp-tile-wide-avatar" style={{ backgroundImage: `url(${avatarUrl})` }} />
               <div className="wp-tile-wide-info">
                 <div className="wp-tile-wide-name">{t('name')}</div>
                 <div className="wp-tile-wide-role">{t('role')}</div>

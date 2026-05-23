@@ -14,6 +14,7 @@ import { SafariApp } from './components/SafariApp';
 import { AdminPanel } from './components/AdminPanel';
 import { CapabilitiesApp } from './components/CapabilitiesApp';
 import { playSound } from './utils/sounds';
+import avatarUrl from './assets/avatar.jpg';
 import './index.css';
 
 // --- APP CONTENT DEFINITIONS ---
@@ -164,7 +165,7 @@ function App() {
           <div style={{ padding: '2rem', fontFamily: 'sans-serif', fontSize: '14px', lineHeight: 1.6, color: '#333' }}>
             <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid #eaeaea', paddingBottom: '20px' }}>
               <img 
-                src="/avatar.jpg" 
+                src={avatarUrl} 
                 alt={t('name')} 
                 style={{ width: '90px', height: '90px', borderRadius: '50%', border: '3px solid #007aff', objectFit: 'cover' }}
               />
@@ -262,7 +263,7 @@ function App() {
         return <SafariApp />;
       case 'resume':
         return (
-          <iframe src="/cv_ru.pdf" width="100%" height="100%" style={{ border: 'none' }} title="Resume PDF" />
+          <iframe src={`${import.meta.env.BASE_URL}cv_ru.pdf`} width="100%" height="100%" style={{ border: 'none' }} title="Resume PDF" />
         );
       case 'cases':
         return (

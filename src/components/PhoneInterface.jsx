@@ -6,6 +6,7 @@ import { PhoneLockScreen } from './PhoneLockScreen';
 import { PhoneStartScreen } from './PhoneStartScreen';
 import { PhonePivot } from './PhonePivot';
 import { playSound } from '../utils/sounds';
+import avatarUrl from '../assets/avatar.jpg';
 import initialPosts from '../data/blog.json';
 
 export const PhoneInterface = () => {
@@ -209,10 +210,10 @@ export const PhoneInterface = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                         <img 
-                          src="/avatar.jpg" 
-                          alt="Egor" 
-                          style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid var(--wp-accent)' }} 
-                        />
+                        src={avatarUrl} 
+                        alt={t('name')} 
+                        style={{ width: '60px', height: '60px', borderRadius: '50%', border: '2px solid var(--wp-accent)', objectFit: 'cover' }}
+                      />
                         <div>
                           <h3 style={{ fontSize: '20px', fontWeight: 600 }}>{t('name')}</h3>
                           <p style={{ fontSize: '12px', color: 'var(--wp-subtle)', marginTop: '4px' }}>{t('role')}</p>
@@ -754,7 +755,7 @@ export const PhoneInterface = () => {
                         Загрузите полное резюме Егора Хромова в формате PDF для печати или просмотра на ПК.
                       </div>
                       <a 
-                        href="/cv_ru.pdf" 
+                        href={`${import.meta.env.BASE_URL}cv_ru.pdf`} 
                         download 
                         onClick={() => playSound('open')}
                         style={{ 

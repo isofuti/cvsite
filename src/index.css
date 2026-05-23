@@ -28,7 +28,7 @@ body {
 .desktop-container {
   width: 100vw;
   height: 100vh;
-  background-image: url('/bg.jpg');
+  background-image: url('./assets/bg.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
