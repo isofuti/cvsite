@@ -106,5 +106,6 @@ function localAdminPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/cvsite/',
   plugins: [react(), localAdminPlugin()],
 })
