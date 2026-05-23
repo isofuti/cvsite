@@ -35,6 +35,9 @@ const resources = {
       "daynet_junior_role": "Junior Marketer",
       "daynet_junior_desc": "Tracked advertising performance metrics and gathered reputation analytics from media and social networks. Developed media plans and coordinated advertising vendors.\n\nResponsibilities:\n• Sourcing reputation analytics data to support commercial proposal generation.\n• Running search monitoring queries across press and social media.\n• Collaborating with media planning agencies and advertising vendors.\n• Tracking and reporting performance metrics (CTR, CPC, CPA) of active ad campaigns.",
       
+      "freelance_role": "Internet Marketer (Freelance)",
+      "freelance_desc": "Setup and optimization of targeted and contextual ad campaigns (Yandex.Direct, VK), target audience and competitor analysis, landing page development, and content planning.",
+      
       // Brand Case Translations
       "case_label": "case study",
       "case_context_title": "Situation & Challenge",
@@ -92,7 +95,7 @@ const resources = {
       "daynet_senior_desc": "Возглавлял команду маркетинга, занимался репутационным анализом. Разработал Python-скрипты для автоматизации сбора и очистки данных о репутации бренда. Проводил тренинги по продукту и руководил защитой рекламных концепций перед заказчиками.\n\nОбязанности:\n• Проведение аналитики репутации компаний для формирования коммерческого предложения (комплексный анализ; разработка стратегий).\n• Программный, ручной и комбинированный мониторинг СМИ и соц-медиа.\n• Организация работы маркетинговой команды.\n• Разработка и поиск инструментов, позволяющих упростить анализ данных, автоматизировать маркетинг.\n• Проведение обучающих тренингов для сотрудников.\n• Проведение встречи с заказчиками, брифы, защита стратегий.",
       
       "daynet_junior_role": "Младший маркетолог",
-      "daynet_junior_desc": "Отслеживал показатели эффективности рекламы, собирал репутационную аналитику СМИ и соцсетей. Занимался медиапланированием и координировал работу с рекламными подрядчиками.",
+      "daynet_junior_desc": "Отслеживал показатели эффективности рекламы, собирал репутационную аналитику СМИ и соцсетей. Занимался медиапланированием и координировал работу с рекламными подрядчиками.\n\nОбязанности:\n• Проведение аналитики репутации компаний для формирования коммерческого предложения (комплексный анализ; разработка стратегий)\n• Программный, ручной и комбинированный мониторинг СМИ и соц-медиа\n• Работа с партнерами и подрядчиками для составления медиапланов клиентов\n• Отслеживание показателей эффективности рекламных кампаний для передачи менеджерам",
       
       "freelance_role": "Интернет-маркетолог (фриланс)",
       "freelance_desc": "Настройка таргетированной и контекстной рекламы (Яндекс.Директ, VK), аудит целевой аудитории и конкурентов, разработка посадочных страниц (лендингов) и контент-планов.",
