@@ -10,6 +10,7 @@ import { Notification } from './components/Notification';
 import { TelegramApp } from './components/TelegramApp';
 import { PhoneInterface } from './components/PhoneInterface';
 import { BrandCaseApp } from './components/BrandCaseApp';
+import { UzbekistanCaseApp } from './components/UzbekistanCaseApp';
 import { SafariApp } from './components/SafariApp';
 import { AdminPanel } from './components/AdminPanel';
 import { CapabilitiesApp } from './components/CapabilitiesApp';
@@ -33,7 +34,8 @@ const getSubApps = (t) => [
   { id: 'toolkit', title: 'Tool-Kit', icon: Folder, color: '#007aff' },
   { id: 'daynet', title: 'DayNet', icon: Folder, color: '#007aff' },
   { id: 'freelance', title: 'Freelance', icon: Folder, color: '#007aff' },
-  { id: 'case_study', title: t('brand_case') || 'Brand Case Study', icon: BarChart3, color: '#af52de' }
+  { id: 'case_study', title: t('brand_case') || 'Brand Case Study', icon: BarChart3, color: '#af52de' },
+  { id: 'uzbekistan_case', title: t('uzbekistan_case') || 'Uzbekistan Labor Market', icon: BarChart3, color: '#34c759' }
 ];
 
 function App() {
@@ -274,10 +276,18 @@ function App() {
                 {t('brand_case')}
               </div>
             </div>
+            <div style={{ textAlign: 'center', cursor: 'pointer', width: '80px' }} onDoubleClick={() => openWindow('uzbekistan_case')}>
+              <BarChart3 size={64} color="#34c759" />
+              <div style={{ marginTop: '8px', fontSize: '12px', fontWeight: 500, lineHeight: 1.2 }}>
+                {t('uzbekistan_case_tab') || 'Uzbekistan Case'}
+              </div>
+            </div>
           </div>
         );
       case 'case_study':
         return <BrandCaseApp />;
+      case 'uzbekistan_case':
+        return <UzbekistanCaseApp />;
       case 'contact':
         return <TelegramApp />;
       case 'snake':

@@ -147,12 +147,14 @@ export const SafariApp = () => {
 
               <div className="article-footer">
                 <a 
-                  href="https://t.me/nonenewfriends" 
+                  href={selectedPost.id === 'post_4' ? 'https://secrets.tbank.ru/blogi-kompanij/rynok-truda-uzbekistana-i-socmedia/' : selectedPost.url || 'https://t.me/nonenewfriends'} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="btn-tenchat-link"
                 >
-                  {t('open_tenchat')} <ExternalLink size={14} />
+                  {selectedPost.id === 'post_4' 
+                    ? (i18n.language === 'ru' ? 'Читать оригинал на Т-Бизнес' : 'Read original on T-Business') 
+                    : t('open_tenchat')} <ExternalLink size={14} />
                 </a>
               </div>
             </article>

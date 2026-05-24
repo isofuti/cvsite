@@ -185,7 +185,7 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
           </div>
         </motion.div>
 
-        {/* Brand Case Study Tile (Medium, 2x2) */}
+        {/* Cases Hub Tile (Medium, 2x2) */}
         <motion.div
           custom={4}
           variants={tileVariants}
@@ -194,7 +194,7 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
           whileTap={{ scale: 0.95, rotateX: 4, rotateY: -4 }}
           style={tiltStyle}
           className="wp-tile medium"
-          onClick={() => handleTileClick('case_study')}
+          onClick={() => handleTileClick('cases')}
           style={{ ...tiltStyle, background: '#af52de' /* Purple */ }}
         >
           <div className="wp-tile-content">
@@ -212,11 +212,11 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
               gap: '2px',
               opacity: 0.8
             }}>
-              <div>• {t('case_label')}</div>
-              <div>• Brand Awareness</div>
-              <div>• Top of Mind &lt; 1%</div>
+              <div>📊 {t('cases_folder')}</div>
+              <div>⚡ Brand Awareness</div>
+              <div>📈 Uzbekistan 2025</div>
             </div>
-            <div className="wp-tile-label">{t('brand_case')}</div>
+            <div className="wp-tile-label">{t('cases_folder')}</div>
           </div>
         </motion.div>
 

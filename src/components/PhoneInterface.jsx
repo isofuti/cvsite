@@ -20,6 +20,8 @@ export const PhoneInterface = () => {
   const [expActiveTab, setExpActiveTab] = useState('summary');
   const [resumeActiveTab, setResumeActiveTab] = useState('view');
   const [caseActiveTab, setCaseActiveTab] = useState('context');
+  const [uzCaseActiveTab, setUzCaseActiveTab] = useState('context');
+  const [selectedCaseId, setSelectedCaseId] = useState(null);
   const [showCookieNotice, setShowCookieNotice] = useState(false);
 
   const [capActiveTab, setCapActiveTab] = useState('data');
@@ -86,11 +88,14 @@ export const PhoneInterface = () => {
   const handleNavHome = () => {
     playSound('close');
     setActiveAppId(null);
+    setSelectedCaseId(null);
   };
 
   const handleNavBack = () => {
     playSound('close');
-    if (activeAppId) {
+    if (selectedCaseId) {
+      setSelectedCaseId(null);
+    } else if (activeAppId) {
       setActiveAppId(null);
     } else if (!isLocked) {
       setIsLocked(true);
@@ -490,7 +495,7 @@ export const PhoneInterface = () => {
                 </div>
                 
                 <a 
-                  href="https://t.me/nonenewfriends" 
+                  href={wpSelectedPost.id === 'post_4' ? 'https://secrets.tbank.ru/blogi-kompanij/rynok-truda-uzbekistana-i-socmedia/' : wpSelectedPost.url || 'https://t.me/nonenewfriends'} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   style={{
@@ -505,7 +510,9 @@ export const PhoneInterface = () => {
                     marginTop: '20px'
                   }}
                 >
-                  {t('open_tenchat')}
+                  {wpSelectedPost.id === 'post_4' 
+                    ? (i18n.language === 'ru' ? 'Читать оригинал на Т-Бизнес' : 'Read original on T-Business') 
+                    : t('open_tenchat')}
                 </a>
               </div>
             ) : (
@@ -779,93 +786,281 @@ export const PhoneInterface = () => {
           </div>
         );
 
-      case 'case_study':
-        return (
-          <div className="wp-hub">
-            <div className="wp-hub-header">
-              <div className="wp-hub-meta">{t('case_label')}</div>
-              <div className="wp-hub-title">{t('brand_case')}</div>
+      case 'cases':
+        if (!selectedCaseId) {
+          return (
+            <div className="wp-hub">
+              <div className="wp-hub-header">
+                <div className="wp-hub-meta">{t('case_label') || 'проекты'}</div>
+                <div className="wp-hub-title">{t('cases_folder')}</div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '0 16px', maxHeight: '380px', overflowY: 'auto' }}>
+                {/* Brand Awareness Case */}
+                <div 
+                  onClick={() => { playSound('open'); setSelectedCaseId('brand'); }}
+                  style={{ 
+                    background: 'rgba(255,255,255,0.05)', 
+                    padding: '16px', 
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '4px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                    {t('case_label')}
+                  </div>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#fff', margin: 0 }}>
+                    {t('brand_case')}
+                  </h3>
+                  <p style={{ fontSize: '12px', color: 'var(--wp-subtle)', marginTop: '6px', marginBottom: 0, lineHeight: 1.4 }}>
+                    {i18n.language === 'ru' 
+                      ? 'Анализ узнаваемости бренда розничных потребителей для крупного электротехнического бренда.' 
+                      : 'Brand awareness research of retail consumers for a major electrical engineering brand.'}
+                  </p>
+                </div>
+
+                {/* Uzbekistan Labor Market Case */}
+                <div 
+                  onClick={() => { playSound('open'); setSelectedCaseId('uzbekistan'); }}
+                  style={{ 
+                    background: 'rgba(255,255,255,0.05)', 
+                    padding: '16px', 
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '4px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                    {t('case_label')}
+                  </div>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#fff', margin: 0 }}>
+                    {t('uzbekistan_case') || 'Рынок труда Узбекистана'}
+                  </h3>
+                  <p style={{ fontSize: '12px', color: 'var(--wp-subtle)', marginTop: '6px', marginBottom: 0, lineHeight: 1.4 }}>
+                    {i18n.language === 'ru' 
+                      ? 'Анализ 373 тыс. сообщений в соцсетях для выявления трендов найма и поведения соискателей.' 
+                      : 'Analysis of 373K social media messages to reveal recruitment trends and candidate behavior.'}
+                  </p>
+                </div>
+              </div>
             </div>
-            <PhonePivot
-              activeTabId={caseActiveTab}
-              onTabChange={setCaseActiveTab}
-              tabs={[
-                {
-                  id: 'context',
-                  title: i18n.language === 'ru' ? 'задача' : 'challenge',
-                  content: (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
-                      <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_context_title')}</h3>
-                      <p>{t('case_context_text')}</p>
-                      <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', borderLeft: '3px solid var(--wp-accent)', fontSize: '12px', marginTop: '10px' }}>
-                        <strong>{i18n.language === 'ru' ? 'Бизнес-проблема:' : 'Business Issue:'}</strong> {i18n.language === 'ru' ? 'Компания с 25-летним опытом не знала розничного потребителя. На фоне ухода конкурентов нужно было за 2 недели перестроить стратегию.' : 'A company with 25 years of history did not know its retail customer. Amid competitors exit, we needed to pivot the strategy in 2 weeks.'}
-                      </div>
-                    </div>
-                  )
-                },
-                {
-                  id: 'stack',
-                  title: i18n.language === 'ru' ? 'стек' : 'stack',
-                  content: (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
-                      <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_stack_title')}</h3>
-                      <p>{t('case_stack_text')}</p>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                          <strong>Brand Analytics API:</strong> {i18n.language === 'ru' ? 'Выгрузка и парсинг 150K+ сообщений.' : 'Harvesting and parsing 150K+ messages.'}
-                        </div>
-                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                          <strong>Python (NLP/ML):</strong> {i18n.language === 'ru' ? 'Обработка, очистка и классификация тональности.' : 'Data cleaning, sentiment and topic classification.'}
+          );
+        } else if (selectedCaseId === 'brand') {
+          return (
+            <div className="wp-hub">
+              <div className="wp-hub-header" onClick={() => { playSound('close'); setSelectedCaseId(null); }} style={{ cursor: 'pointer' }}>
+                <div className="wp-hub-meta" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ChevronLeft size={14} /> {t('back_to_list') || 'назад к списку'}
+                </div>
+                <div className="wp-hub-title" style={{ fontSize: '20px' }}>{t('brand_case')}</div>
+              </div>
+              <PhonePivot
+                activeTabId={caseActiveTab}
+                onTabChange={setCaseActiveTab}
+                tabs={[
+                  {
+                    id: 'context',
+                    title: i18n.language === 'ru' ? 'задача' : 'challenge',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_context_title')}</h3>
+                        <p>{t('case_context_text')}</p>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', borderLeft: '3px solid var(--wp-accent)', fontSize: '12px', marginTop: '10px' }}>
+                          <strong>{i18n.language === 'ru' ? 'Бизнес-проблема:' : 'Business Issue:'}</strong> {i18n.language === 'ru' ? 'Компания с 25-летним опытом не знала розничного потребителя. На фоне ухода конкурентов нужно было за 2 недели перестроить стратегию.' : 'A company with 25 years of history did not know its retail customer. Amid competitors exit, we needed to pivot the strategy in 2 weeks.'}
                         </div>
                       </div>
-                    </div>
-                  )
-                },
-                {
-                  id: 'process',
-                  title: i18n.language === 'ru' ? 'процесс' : 'process',
-                  content: (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
-                      <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_process_title')}</h3>
-                      <p>{t('case_process_text')}</p>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', marginTop: '6px' }}>
-                        <div>1. <strong>{i18n.language === 'ru' ? 'CAWI-опросы:' : 'CAWI Surveys:'}</strong> {i18n.language === 'ru' ? '1500 респондентов на платформе Opronix.' : '1500 respondents via Opronix platform.'}</div>
-                        <div>2. <strong>{i18n.language === 'ru' ? 'Парсинг NLP:' : 'NLP Parsing:'}</strong> {i18n.language === 'ru' ? 'Обработка и фильтрация спама на Python.' : 'Processing and spam filtering in Python.'}</div>
-                        <div>3. <strong>{i18n.language === 'ru' ? 'ML-модели:' : 'ML Classification:'}</strong> {i18n.language === 'ru' ? 'Разметка тональности отзывов.' : 'Sentiment and category tagging.'}</div>
-                      </div>
-                    </div>
-                  )
-                },
-                {
-                  id: 'results',
-                  title: i18n.language === 'ru' ? 'результат' : 'results',
-                  content: (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
-                      <div>
-                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600, marginBottom: '6px' }}>{t('case_results_title')}</h3>
-                        <p>{t('case_results_text')}</p>
-                      </div>
-                      <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <div style={{ fontSize: '11px', color: 'var(--wp-subtle)', marginBottom: '8px', fontWeight: 600 }}>{i18n.language === 'ru' ? 'Пирамида узнаваемости бренда' : 'Brand Awareness Pyramid'}</div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%', alignItems: 'center' }}>
-                          <div style={{ width: '40%', height: '26px', background: '#ff3b30', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
-                            <span>Top of Mind &lt; 1%</span>
+                    )
+                  },
+                  {
+                    id: 'stack',
+                    title: i18n.language === 'ru' ? 'стек' : 'stack',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_stack_title')}</h3>
+                        <p>{t('case_stack_text')}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+                          <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <strong>Brand Analytics API:</strong> {i18n.language === 'ru' ? 'Выгрузка и парсинг 150K+ сообщений.' : 'Harvesting and parsing 150K+ messages.'}
                           </div>
-                          <div style={{ width: '65%', height: '26px', background: '#ff9500', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
-                            <span>{i18n.language === 'ru' ? 'Спонтанная 14%' : 'Spontaneous 14%'}</span>
-                          </div>
-                          <div style={{ width: '90%', height: '26px', background: '#007aff', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
-                            <span>{i18n.language === 'ru' ? 'Подсказанная 56%' : 'Aided 56%'}</span>
+                          <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <strong>Python (NLP/ML):</strong> {i18n.language === 'ru' ? 'Обработка, очистка и классификация тональности.' : 'Data cleaning, sentiment and topic classification.'}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )
-                }
-              ]}
-            />
-          </div>
-        );
+                    )
+                  },
+                  {
+                    id: 'process',
+                    title: i18n.language === 'ru' ? 'процесс' : 'process',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('case_process_title')}</h3>
+                        <p>{t('case_process_text')}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', marginTop: '6px' }}>
+                          <div>1. <strong>{i18n.language === 'ru' ? 'CAWI-опросы:' : 'CAWI Surveys:'}</strong> {i18n.language === 'ru' ? '1500 респондентов на платформе Opronix.' : '1500 respondents via Opronix platform.'}</div>
+                          <div>2. <strong>{i18n.language === 'ru' ? 'Парсинг NLP:' : 'NLP Parsing:'}</strong> {i18n.language === 'ru' ? 'Обработка и фильтрация спама на Python.' : 'Processing and spam filtering in Python.'}</div>
+                          <div>3. <strong>{i18n.language === 'ru' ? 'ML-модели:' : 'ML Classification:'}</strong> {i18n.language === 'ru' ? 'Разметка тональности отзывов.' : 'Sentiment and category tagging.'}</div>
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'results',
+                    title: i18n.language === 'ru' ? 'результат' : 'results',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <div>
+                          <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600, marginBottom: '6px' }}>{t('case_results_title')}</h3>
+                          <p>{t('case_results_text')}</p>
+                        </div>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                          <div style={{ fontSize: '11px', color: 'var(--wp-subtle)', marginBottom: '8px', fontWeight: 600 }}>{i18n.language === 'ru' ? 'Пирамида узнаваемости бренда' : 'Brand Awareness Pyramid'}</div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%', alignItems: 'center' }}>
+                            <div style={{ width: '40%', height: '26px', background: '#ff3b30', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
+                              <span>Top of Mind &lt; 1%</span>
+                            </div>
+                            <div style={{ width: '65%', height: '26px', background: '#ff9500', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
+                              <span>{i18n.language === 'ru' ? 'Спонтанная 14%' : 'Spontaneous 14%'}</span>
+                            </div>
+                            <div style={{ width: '90%', height: '26px', background: '#007aff', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '8px', fontWeight: 'bold', clipPath: 'polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%)', textAlign: 'center' }}>
+                              <span>{i18n.language === 'ru' ? 'Подсказанная 56%' : 'Aided 56%'}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                ]}
+              />
+            </div>
+          );
+        } else if (selectedCaseId === 'uzbekistan') {
+          return (
+            <div className="wp-hub">
+              <div className="wp-hub-header" onClick={() => { playSound('close'); setSelectedCaseId(null); }} style={{ cursor: 'pointer' }}>
+                <div className="wp-hub-meta" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ChevronLeft size={14} /> {t('back_to_list') || 'назад к списку'}
+                </div>
+                <div className="wp-hub-title" style={{ fontSize: '20px' }}>{t('uzbekistan_case') || 'Рынок труда'}</div>
+              </div>
+              <PhonePivot
+                activeTabId={uzCaseActiveTab}
+                onTabChange={setUzCaseActiveTab}
+                tabs={[
+                  {
+                    id: 'context',
+                    title: i18n.language === 'ru' ? 'задача' : 'challenge',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('uz_case_context_title')}</h3>
+                        <p>{t('uz_case_context_text')}</p>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', borderLeft: '3px solid var(--wp-accent)', fontSize: '12px', marginTop: '10px' }}>
+                          <strong>{i18n.language === 'ru' ? 'Бизнес-проблема:' : 'Business Issue:'}</strong> {i18n.language === 'ru' ? 'Разрыв в понимании ожиданий соискателей и предложений бизнеса на рынке труда Узбекистана.' : 'The expectation gap between candidates and employers in Uzbekistan, and lack of data for building a strong employer brand.'}
+                        </div>
+                        <div style={{ marginTop: '10px' }}>
+                          <a 
+                            href="https://secrets.tbank.ru/blogi-kompanij/rynok-truda-uzbekistana-i-socmedia/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            style={{ 
+                              display: 'block', 
+                              background: 'var(--wp-accent)', 
+                              color: 'white', 
+                              padding: '10px', 
+                              textAlign: 'center', 
+                              fontSize: '12px', 
+                              fontWeight: 'bold', 
+                              textDecoration: 'none' 
+                            }}
+                          >
+                            {i18n.language === 'ru' ? 'Полная версия статьи' : 'Read Full Article'}
+                          </a>
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'stack',
+                    title: i18n.language === 'ru' ? 'стек' : 'stack',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.5 }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('uz_case_stack_title')}</h3>
+                        <p>{t('uz_case_stack_text')}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+                          <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <strong>Brand Analytics API:</strong> {i18n.language === 'ru' ? 'Сбор 373K сообщений в СМИ и соцсетях.' : 'Harvesting 373K messages in social media & press.'}
+                          </div>
+                          <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <strong>Python & SQL:</strong> {i18n.language === 'ru' ? 'NLP фильтрация и кластеризация тем.' : 'NLP filtering and topic clustering.'}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'process',
+                    title: i18n.language === 'ru' ? 'процесс' : 'process',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600 }}>{t('uz_case_process_title')}</h3>
+                        <p>{t('uz_case_process_text')}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', marginTop: '6px' }}>
+                          <div>1. <strong>{i18n.language === 'ru' ? 'Выгрузка данных:' : 'Data Fetching:'}</strong> {i18n.language === 'ru' ? 'Сбор постов с января по апрель 2025.' : 'Collecting posts from Jan to Apr 2025.'}</div>
+                          <div>2. <strong>{i18n.language === 'ru' ? 'Фильтрация на Python:' : 'Python Filtering:'}</strong> {i18n.language === 'ru' ? 'Очистка от спама и разметка тональности.' : 'Removing spam and tagging sentiment.'}</div>
+                          <div>3. <strong>{i18n.language === 'ru' ? 'Лингво-анализ:' : 'Linguistic Analysis:'}</strong> {i18n.language === 'ru' ? 'Определение соотношения языков.' : 'Analyzing the Uzbek vs. Russian balance.'}</div>
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'results',
+                    title: i18n.language === 'ru' ? 'результат' : 'results',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <div>
+                          <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '18px', fontWeight: 600, marginBottom: '6px' }}>{t('uz_case_results_title')}</h3>
+                          <p>{t('uz_case_results_text')}</p>
+                        </div>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '12px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                          <div style={{ fontSize: '11px', color: 'var(--wp-subtle)', marginBottom: '8px', fontWeight: 600 }}>{i18n.language === 'ru' ? 'Каналы поиска работы' : 'Job Search Channels'}</div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', fontSize: '11px' }}>
+                            <div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                                <span>Telegram (UzDev, CareerUz...)</span>
+                                <span style={{ color: 'var(--wp-accent-light)' }}>52%</span>
+                              </div>
+                              <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)' }}>
+                                <div style={{ width: '52%', height: '100%', background: 'var(--wp-accent)' }} />
+                              </div>
+                            </div>
+                            <div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                                <span>{i18n.language === 'ru' ? 'Сайты вакансий (hh.uz...)' : 'Job Boards (hh.uz...)'}</span>
+                                <span style={{ color: 'var(--wp-accent-light)' }}>28%</span>
+                              </div>
+                              <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)' }}>
+                                <div style={{ width: '28%', height: '100%', background: 'var(--wp-accent)' }} />
+                              </div>
+                            </div>
+                            <div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                                <span>{i18n.language === 'ru' ? 'Связи / Рекомендации' : 'Referrals'}</span>
+                                <span style={{ color: 'var(--wp-accent-light)' }}>12%</span>
+                              </div>
+                              <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)' }}>
+                                <div style={{ width: '12%', height: '100%', background: 'var(--wp-accent)' }} />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                ]}
+              />
+            </div>
+          );
+        }
       default:
         return null;
     }

@@ -61,7 +61,19 @@ const resources = {
       "blog_marketing": "Marketing",
       "blog_cases": "Case Studies",
       "blog_all": "All Posts",
-      "open_tenchat": "Open original in TenChat"
+      "open_tenchat": "Open original in TenChat",
+      "uzbekistan_case": "Uzbekistan Labor Market",
+      "uzbekistan_case_title": "Uzbekistan Labor Market Analysis",
+      "uzbekistan_case_tab": "Uzbekistan Case",
+      "back_to_list": "back to list",
+      "uz_case_context_title": "Situation & Challenge",
+      "uz_case_context_text": "Analyzing the real state of the labor market in Uzbekistan using social listening. Macroeconomic indicators (GDP, inflation) showed positive trends, but qualitative metrics like candidate sentiment, linguistic distributions, and recruitment channel preferences were undocumented.",
+      "uz_case_stack_title": "Tools & Tech",
+      "uz_case_stack_text": "Brand Analytics (Social Listening API), Python (Pandas, NumPy, NLP for parsing & text clustering), SQL/ClickHouse (data storage), Yandex DataLens (interactive BI dashboard).",
+      "uz_case_process_title": "Methodology & Process",
+      "uz_case_process_text": "Analyzed 373,000 social media and press messages from Jan to Apr 2025. Removed spam and irrelevant ads. Employed Natural Language Processing (NLP) to classify topics (salary, job search, requirements) and linguistic balance (Uzbek vs. Russian).",
+      "uz_case_results_title": "Results & Impact",
+      "uz_case_results_text": "Discovered a massive salary discrepancy between candidates and employers. Identified that 32% of users rely heavily on social networks (primarily Telegram channels like CareerUz, UzDev Jobs) for recruitment. Prepared actionable GTM and employer branding guidelines."
     }
   },
   ru: {
@@ -123,7 +135,19 @@ const resources = {
       "blog_marketing": "Маркетинг",
       "blog_cases": "Кейсы",
       "blog_all": "Все посты",
-      "open_tenchat": "Открыть оригинал в TenChat"
+      "open_tenchat": "Открыть оригинал в TenChat",
+      "uzbekistan_case": "Кейс: Рынок труда Узбекистана",
+      "uzbekistan_case_title": "Анализ рынка труда Узбекистана",
+      "uzbekistan_case_tab": "Кейс: Узбекистан",
+      "back_to_list": "назад к списку",
+      "uz_case_context_title": "Ситуация и Задача",
+      "uz_case_context_text": "Анализ реального состояния рынка труда в Узбекистане через призму социальных медиа. Официальные макроэкономические показатели демонстрировали стабильный рост, но качественные метрики (настроения соискателей, языковые барьеры, предпочтения каналов найма) оставались не оцифрованы.",
+      "uz_case_stack_title": "Стек и Инструменты",
+      "uz_case_stack_text": "Brand Analytics (Social Listening API), Python (Pandas, NumPy, NLP для парсинга и кластеризации текстов), SQL/ClickHouse для хранения массивов данных, Yandex DataLens для интерактивного дашборда.",
+      "uz_case_process_title": "Методология и Процесс",
+      "uz_case_process_text": "Собрано и проанализировано 373 000 сообщений в соцсетях и СМИ с января по апрель 2025 года. Проведена автоматическая очистка от спама. С помощью NLP-методов классифицированы основные темы обсуждений (зарплаты, вакансии, требования) и соотношение языков (узбекский/русский).",
+      "uz_case_results_title": "Результаты и Влияние",
+      "uz_case_results_text": "Выявлен резкий разрыв между зарплатными ожиданиями соискателей и предложениями бизнеса. 32% соискателей используют соцсети (в первую очередь Telegram-каналы вроде CareerUz, UzDev Jobs) как основной инструмент найма. Сформированы рекомендации по выстраиванию бренда работодателя в регионе."
     }
   }
 };

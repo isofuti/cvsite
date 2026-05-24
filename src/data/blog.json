@@ -29,5 +29,15 @@
     "date": "05.05.2026",
     "image": "/blog/default.jpg",
     "category": "Marketing"
+  },
+  {
+    "id": "post_4",
+    "title_ru": "Рынок труда Узбекистана в 2025: роль соцсетей и поведение соискателей",
+    "title_en": "Uzbekistan Labor Market in 2025: Social Media and Candidate Behavior",
+    "text_ru": "Наши аналитики из DAYNET провели исследование рынка труда Узбекистана, проанализировав более 373 000 упоминаний в соцсетях и СМИ с помощью системы Brand Analytics с января по апрель 2025 года. Целью было сравнить официальные макропоказатели с реальными настроениями соискателей и бизнеса.\n\nЧто показал анализ?\n1. Доминирование Telegram. Мессенджер стал ключевым хабом для найма (32% соискателей ищут работу в соцсетях, активно используя каналы вроде UzDev Jobs и CareerUz).\n2. Разрыв ожиданий. Выявлен сильный дисбаланс между предлагаемыми зарплатами и ожиданиями кандидатов (при среднем росте окладов на рынке на 13-19% в 2025 году).\n3. Языковой барьер. Вопросы знания узбекского и русского языков, а также миграционные настроения остаются ключевыми темами обсуждений.\n\nПрактический вывод: бизнесу в регионе необходимо переходить от хаотичного найма на классических джоб-бордах (где активность падает) к выстраиванию бренда работодателя непосредственно в социальных медиа.",
+    "text_en": "Our analytics team at DAYNET conducted a comprehensive study of the Uzbekistan labor market, parsing over 373,000 social media and media mentions using Brand Analytics between January and April 2025. The goal was to compare official macroeconomic metrics with actual candidate and employer sentiment.\n\nKey Findings:\n1. Telegram Dominance: The messaging platform has become the central hub for recruitment. 32% of candidates search for jobs directly in social media, utilizing channels like UzDev Jobs and CareerUz.\n2. Expectation Gap: We identified a significant mismatch between candidate salary expectations and actual corporate offers (despite an average salary growth of 13-19% in the region in 2025).\n3. Language & Migration: Language requirements (Uzbek vs. Russian) and migration sentiments remain high-priority themes of discussion.\n\nKey Takeaway: To succeed in this market, companies must pivot from traditional job boards (which are experiencing declining user activity) to building a strong employer brand directly on social media.",
+    "date": "01.08.2025",
+    "image": "/blog/default.jpg",
+    "category": "Analytics"
   }
 ]
