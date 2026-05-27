@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FileText, Folder, User, Image as ImageIcon, Send, Gamepad2, BarChart3, ShieldAlert, BookOpen } from 'lucide-react';
+import { FileText, Folder, User, Image as ImageIcon, Send, Gamepad2, BarChart3, ShieldAlert, BookOpen, Award } from 'lucide-react';
 import { MenuBar } from './components/MenuBar';
 import { Dock } from './components/Dock';
 import { MacWindow } from './components/Window';
@@ -15,6 +15,7 @@ import { KazakhstanCaseApp } from './components/KazakhstanCaseApp';
 import { SafariApp } from './components/SafariApp';
 import { AdminPanel } from './components/AdminPanel';
 import { CapabilitiesApp } from './components/CapabilitiesApp';
+import { CertificatesApp } from './components/CertificatesApp';
 import { playSound } from './utils/sounds';
 import avatarUrl from './assets/avatar.jpg';
 import './index.css';
@@ -24,6 +25,7 @@ const getApps = (t) => [
   { id: 'about', title: t('about_me') || 'About Me', icon: User, color: '#ff3b30' },
   { id: 'experience', title: t('experience_folder') || 'Experience', icon: Folder, color: '#007aff' },
   { id: 'skills', title: t('skills_doc') || 'Capabilities', icon: FileText, color: '#34c759' },
+  { id: 'certificates', title: t('certificates_title') || 'Certificates', icon: Award, color: '#af52de' },
   { id: 'resume', title: t('resume_pdf') || 'Resume', icon: ImageIcon, color: '#ff2d55' },
   { id: 'cases', title: t('cases_folder') || 'Cases', icon: Folder, color: '#007aff' },
   { id: 'safari', title: t('blog_title') || 'Blog', icon: BookOpen, color: '#007aff' },
@@ -300,6 +302,8 @@ function App() {
         return <KazakhstanCaseApp />;
       case 'contact':
         return <TelegramApp />;
+      case 'certificates':
+        return <CertificatesApp />;
       case 'snake':
         return <SnakeGame />;
       default:

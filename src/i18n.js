@@ -88,7 +88,22 @@ const resources = {
       "kaz_case_process_title": "Funnel & Nudging",
       "kaz_case_process_text": "Implemented a Two-Phase Funnel. Phase 1 (Pull) validated demand online via Meta/TikTok ads, building a data-backed Partner Kit. Phase 2 (Push) entered retail shelves using these proven sales metrics. Handled consumer autopilot via 'transparent window' packaging and trade marketing nudges.",
       "kaz_case_results_title": "MarTech & Impact",
-      "kaz_case_results_text": "Designed a python-based digital shelf scraping pipeline for regional delivery apps (Magnum Go, Arbuz) to enable dynamic pricing, and WhatsApp API webhooks to automate customer reviews. The strategy was successfully approved by the client and is now in initial digital deployment."
+      "kaz_case_results_text": "Designed a python-based digital shelf scraping pipeline for regional delivery apps (Magnum Go, Arbuz) to enable dynamic pricing, and WhatsApp API webhooks to automate customer reviews. The strategy was successfully approved by the client and is now in initial digital deployment.",
+      
+      // Certificates translations
+      "certificates_title": "Certificates",
+      "cert_issuer": "Issuer",
+      "cert_id": "Credential ID",
+      "cert_valid": "Valid Until",
+      "cert_verify": "Verify Online",
+      "cert_download": "Open File",
+      "cert_all": "All Certificates",
+      "cert_yandex": "Yandex",
+      "cert_vk": "VK",
+      "cert_hubspot": "HubSpot",
+      "cert_brand_analytics": "Brand Analytics",
+      "cert_preview_placeholder": "Select a certificate to view details and preview",
+      "cert_no_preview": "Preview is not embedded. Click the button above to view the certificate file."
     }
   },
   ru: {
@@ -177,7 +192,22 @@ const resources = {
       "kaz_case_process_title": "Воронка и Подталкивание",
       "kaz_case_process_text": "Внедрена двухфазная воронка. Фаза 1 (Pull) — онлайн-тесты трафика (Meta, TikTok) и e-com продаж для упаковки цифр в Partner Kit. Фаза 2 (Push) — экспансия в ритейл с доказанной оборачиваемостью. Для обхода автопилота разработана упаковка с прозрачным окном (чистота крупы) и трейд-маркетинг nudging.",
       "kaz_case_results_title": "MarTech и Результаты",
-      "kaz_case_results_text": "Спроектирован Python-парсер цифровых полок доставки (Magnum Go, Arbuz) для динамического ценообразования и WhatsApp API вебхуки для автоматического сбора отзывов. Стратегия успешно защищена перед заказчиком и находится на этапе запуска инфраструктуры продаж."
+      "kaz_case_results_text": "Спроектирован Python-парсер цифровых полок доставки (Magnum Go, Arbuz) для динамического ценообразования и WhatsApp API вебхуки для автоматического сбора отзывов. Стратегия успешно защищена перед заказчиком и находится на этапе запуска инфраструктуры продаж.",
+      
+      // Certificates translations
+      "certificates_title": "Сертификаты",
+      "cert_issuer": "Организация",
+      "cert_id": "ID сертификата",
+      "cert_valid": "Действителен до",
+      "cert_verify": "Проверить онлайн",
+      "cert_download": "Открыть файл",
+      "cert_all": "Все сертификаты",
+      "cert_yandex": "Яндекс",
+      "cert_vk": "VK",
+      "cert_hubspot": "HubSpot",
+      "cert_brand_analytics": "Brand Analytics",
+      "cert_preview_placeholder": "Выберите сертификат для просмотра деталей и превью",
+      "cert_no_preview": "Предпросмотр не встроен. Нажмите на кнопку выше, чтобы открыть файл сертификата."
     }
   }
 };

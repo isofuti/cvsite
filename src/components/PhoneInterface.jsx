@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Home, Search, Send, RotateCcw, ArrowLeft, ArrowRight, ArrowUp, ArrowDown, MessageSquare, ShieldAlert, Compass } from 'lucide-react';
+import { ChevronLeft, Home, Search, Send, RotateCcw, ArrowLeft, ArrowRight, ArrowUp, ArrowDown, MessageSquare, ShieldAlert, Compass, Award, ExternalLink, Eye, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { PhoneLockScreen } from './PhoneLockScreen';
 import { PhoneStartScreen } from './PhoneStartScreen';
@@ -8,6 +8,7 @@ import { PhonePivot } from './PhonePivot';
 import { playSound } from '../utils/sounds';
 import avatarUrl from '../assets/avatar.jpg';
 import initialPosts from '../data/blog.json';
+import { certificatesData } from '../data/certificates';
 
 export const PhoneInterface = () => {
   const { t, i18n } = useTranslation();
@@ -29,6 +30,10 @@ export const PhoneInterface = () => {
   const [posts, setPosts] = useState(initialPosts || []);
   const [wpSelectedPost, setWpSelectedPost] = useState(null);
   const [wpActiveCategory, setWpActiveCategory] = useState('All');
+  
+  // Certificates mobile state
+  const [phoneActiveCertId, setPhoneActiveCertId] = useState(null);
+  const [phoneCertCategory, setPhoneCertCategory] = useState('all');
   
   // Telegram mock state
   const [tgMessage, setTgMessage] = useState('');
@@ -139,11 +144,14 @@ export const PhoneInterface = () => {
     playSound('close');
     setActiveAppId(null);
     setSelectedCaseId(null);
+    setPhoneActiveCertId(null);
   };
 
   const handleNavBack = () => {
     playSound('close');
-    if (selectedCaseId) {
+    if (phoneActiveCertId) {
+      setPhoneActiveCertId(null);
+    } else if (selectedCaseId) {
       setSelectedCaseId(null);
     } else if (activeAppId) {
       setActiveAppId(null);
@@ -243,6 +251,205 @@ export const PhoneInterface = () => {
     const interval = setInterval(moveSnake, 200);
     return () => clearInterval(interval);
   }, [activeAppId, phoneDir, phoneFood, phoneSnakeOver, generatePhoneFood]);
+
+  // Certificates mobile renderer
+  const renderCertificatesApp = () => {
+    if (phoneActiveCertId) {
+      const cert = certificatesData.find(c => c.id === phoneActiveCertId);
+      if (!cert) return null;
+
+      const getAssetUrl = (fileName) => {
+        return `${import.meta.env.BASE_URL}certificates/${fileName}`;
+      };
+
+      return (
+        <div className="wp-hub" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div className="wp-hub-header" onClick={() => { playSound('close'); setPhoneActiveCertId(null); }} style={{ cursor: 'pointer', paddingBottom: '12px' }}>
+            <div className="wp-hub-meta" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <ChevronLeft size={14} /> {t('back_to_list') || 'back to list'}
+            </div>
+            <div className="wp-hub-title" style={{ fontSize: '18px', whiteSpace: 'normal', paddingRight: '8px', lineHeight: 1.3 }}>
+              {i18n.language === 'ru' ? cert.titleRu : cert.titleEn}
+            </div>
+          </div>
+          
+          <div style={{ flex: 1, overflowY: 'auto', padding: '0 20px 20px 20px', display: 'flex', flexDirection: 'column', gap: '16px' }} className="wp-scroll-content">
+            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div>
+                <div style={{ fontSize: '10px', color: 'var(--wp-subtle)', textTransform: 'uppercase', fontWeight: 600 }}>{t('cert_issuer')}</div>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: '#fff', marginTop: '2px' }}>{cert.issuer}</div>
+              </div>
+              {cert.credentialId && (
+                <div>
+                  <div style={{ fontSize: '10px', color: 'var(--wp-subtle)', textTransform: 'uppercase', fontWeight: 600 }}>{t('cert_id')}</div>
+                  <div style={{ fontSize: '13px', color: '#eaeaea', marginTop: '2px', fontFamily: 'monospace' }}>{cert.credentialId}</div>
+                </div>
+              )}
+              <div>
+                <div style={{ fontSize: '10px', color: 'var(--wp-subtle)', textTransform: 'uppercase', fontWeight: 600 }}>{t('cert_valid')}</div>
+                <div style={{ fontSize: '13px', color: '#eaeaea', marginTop: '2px' }}>{cert.validUntil}</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {cert.verificationUrl && (
+                <a
+                  href={cert.verificationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    padding: '12px',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    textAlign: 'center'
+                  }}
+                >
+                  <ExternalLink size={16} />
+                  {t('cert_verify')}
+                </a>
+              )}
+              <a
+                href={getAssetUrl(cert.file)}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  background: 'var(--wp-accent)',
+                  padding: '12px',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  textAlign: 'center'
+                }}
+              >
+                <Eye size={16} />
+                {t('cert_download')}
+              </a>
+            </div>
+
+            <div style={{
+              flex: 1,
+              background: 'rgba(0,0,0,0.2)',
+              border: '1px solid rgba(255,255,255,0.05)',
+              minHeight: '200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '10px'
+            }}>
+              {cert.type === 'image' ? (
+                <img
+                  src={getAssetUrl(cert.file)}
+                  alt={cert.titleEn}
+                  style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }}
+                />
+              ) : (
+                <div style={{ textAlign: 'center', color: 'var(--wp-subtle)', padding: '20px' }}>
+                  <FileText size={40} style={{ margin: '0 auto 10px auto', opacity: 0.5 }} />
+                  <div style={{ fontSize: '11px', lineHeight: 1.4 }}>{t('cert_no_preview')}</div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const filteredCerts = phoneCertCategory === 'all'
+      ? certificatesData
+      : certificatesData.filter(c => c.issuer === phoneCertCategory);
+
+    const categories = [
+      { id: 'all', label: i18n.language === 'ru' ? 'Все' : 'All' },
+      { id: 'Yandex', label: 'Yandex' },
+      { id: 'VK', label: 'VK' },
+      { id: 'HubSpot', label: 'HubSpot' },
+      { id: 'Brand Analytics', label: 'Brand An.' }
+    ];
+
+    return (
+      <div className="wp-hub" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className="wp-hub-header">
+          <div className="wp-hub-meta">{i18n.language === 'ru' ? 'достижения Егора' : 'credentials'}</div>
+          <div className="wp-hub-title">{t('certificates_title')}</div>
+        </div>
+
+        {/* Category filters */}
+        <div style={{ padding: '0 16px 12px 16px', overflowX: 'auto', display: 'flex', gap: '8px', scrollbarWidth: 'none' }} className="no-scrollbar">
+          {categories.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setPhoneCertCategory(cat.id)}
+              style={{
+                padding: '6px 12px',
+                background: phoneCertCategory === cat.id ? 'var(--wp-accent)' : 'rgba(255,255,255,0.08)',
+                color: '#fff',
+                border: 'none',
+                fontSize: '11px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* List items */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '0 16px 20px 16px', display: 'flex', flexDirection: 'column', gap: '10px' }} className="wp-scroll-content">
+          {filteredCerts.map(cert => (
+            <div
+              key={cert.id}
+              onClick={() => { playSound('open'); setPhoneActiveCertId(cert.id); }}
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                padding: '12px',
+                border: '1px solid rgba(255,255,255,0.08)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}
+            >
+              <div style={{
+                width: '32px',
+                height: '32px',
+                background: 'rgba(255,255,255,0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--wp-accent-light)'
+              }}>
+                <Award size={18} />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {i18n.language === 'ru' ? cert.titleRu : cert.titleEn}
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--wp-subtle)', marginTop: '2px', display: 'flex', gap: '8px' }}>
+                  <span>{cert.issuer}</span>
+                  {cert.credentialId && <span>#{cert.credentialId}</span>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   // App render maps
   const renderAppContent = (appId) => {
@@ -1200,6 +1407,8 @@ export const PhoneInterface = () => {
             </div>
           );
         }
+      case 'certificates':
+        return renderCertificatesApp();
       default:
         return null;
     }

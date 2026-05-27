@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Code, FileDown, MessageSquare, Gamepad2, Languages, BarChart3, BookOpen } from 'lucide-react';
+import { Briefcase, Code, FileDown, MessageSquare, Gamepad2, Languages, BarChart3, BookOpen, Award } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { playSound } from '../utils/sounds';
 import avatarUrl from '../assets/avatar.jpg';
@@ -275,9 +275,44 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
           </div>
         </motion.div>
 
-        {/* Language Tile (Small, 1x1) */}
+        {/* Certificates Tile (Medium, 2x2) */}
         <motion.div
           custom={7}
+          variants={tileVariants}
+          initial="hidden"
+          animate="show"
+          whileTap={{ scale: 0.95, rotateX: 4, rotateY: -4 }}
+          style={tiltStyle}
+          className="wp-tile medium"
+          onClick={() => handleTileClick('certificates')}
+          style={{ ...tiltStyle, background: '#7928ca' }}
+        >
+          <div className="wp-tile-content">
+            <div className="wp-tile-icon-center">
+              <Award size={36} />
+            </div>
+            <div style={{
+              position: 'absolute',
+              top: '12px',
+              left: '12px',
+              fontSize: '11px',
+              textAlign: 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2px',
+              opacity: 0.8
+            }}>
+              <div>🏆 {t('cert_yandex')}</div>
+              <div>💼 HubSpot & VK</div>
+              <div>📊 Brand Analytics</div>
+            </div>
+            <div className="wp-tile-label">{t('certificates_title')}</div>
+          </div>
+        </motion.div>
+
+        {/* Language Tile (Small, 1x1) */}
+        <motion.div
+          custom={8}
           variants={tileVariants}
           initial="hidden"
           animate="show"
@@ -297,7 +332,7 @@ export const PhoneStartScreen = ({ onOpenApp, onToggleLanguage }) => {
 
         {/* Resume PDF Tile (Small, 1x1) */}
         <motion.div
-          custom={8}
+          custom={9}
           variants={tileVariants}
           initial="hidden"
           animate="show"
