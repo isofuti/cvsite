@@ -84,7 +84,7 @@ export const SafariApp = () => {
         <div className="safari-search-bar">
           <Shield size={13} className="safari-secure-icon" />
           <div className="safari-url">
-            tenchat.ru/egor_khromov{selectedPost ? `/blog/${selectedPost.id}` : '/blog'}
+            theyoungest.ru/blog{selectedPost ? `/${selectedPost.id}` : ''}
           </div>
           <Compass size={14} className="safari-compass-icon" />
         </div>

@@ -73,7 +73,22 @@ const resources = {
       "uz_case_process_title": "Methodology & Process",
       "uz_case_process_text": "Analyzed 373,000 social media and press messages from Jan to Apr 2025. Removed spam and irrelevant ads. Employed Natural Language Processing (NLP) to classify topics (salary, job search, requirements) and linguistic balance (Uzbek vs. Russian).",
       "uz_case_results_title": "Results & Impact",
-      "uz_case_results_text": "Discovered a massive salary discrepancy between candidates and employers. Identified that 32% of users rely heavily on social networks (primarily Telegram channels like CareerUz, UzDev Jobs) for recruitment. Prepared actionable GTM and employer branding guidelines."
+      "uz_case_results_text": "Discovered a massive salary discrepancy between candidates and employers. Identified that 32% of users rely heavily on social networks (primarily Telegram channels like CareerUz, UzDev Jobs) for recruitment. Prepared actionable GTM and employer branding guidelines.",
+      "contact_email": "egor@theyoungest.ru",
+      "contact_phone": "89200700406",
+      "contact_location": "Nizhny Novgorod, RF",
+      "contact_telegram": "@nonenewfriends",
+      "kazakhstan_case": "Kazakhstan Grocery GTM",
+      "kazakhstan_case_title": "Kazakhstan Grocery GTM Launch Strategy",
+      "kazakhstan_case_tab": "Kazakhstan Case",
+      "kaz_case_context_title": "Context & Challenge",
+      "kaz_case_context_text": "Launching a local B2C grocery brand in Kazakhstan amid heavy import dominance. Shelves are controlled by import giants, buyers avoid unknown brands, and consumers buy established marks on autopilot. Furthermore, local products are often perceived as cheap, low-quality compromises.",
+      "kaz_case_stack_title": "Framework & Rules",
+      "kaz_case_stack_text": "Built on the C.O.M.P.A.S.S. GTM framework. Covered Commercial Orientation (digital compliance in National Product Catalog, Standard tax LLP entity, 3-month fee-free trial), Market Planning (100% clean closed-loop product on Swiss machinery, Affordable Clean Eating positioning), and Strategic Scalability.",
+      "kaz_case_process_title": "Funnel & Nudging",
+      "kaz_case_process_text": "Implemented a Two-Phase Funnel. Phase 1 (Pull) validated demand online via Meta/TikTok ads, building a data-backed Partner Kit. Phase 2 (Push) entered retail shelves using these proven sales metrics. Handled consumer autopilot via 'transparent window' packaging and trade marketing nudges.",
+      "kaz_case_results_title": "MarTech & Impact",
+      "kaz_case_results_text": "Designed a python-based digital shelf scraping pipeline for regional delivery apps (Magnum Go, Arbuz) to enable dynamic pricing, and WhatsApp API webhooks to automate customer reviews. The strategy was successfully approved by the client and is now in initial digital deployment."
     }
   },
   ru: {
@@ -147,7 +162,22 @@ const resources = {
       "uz_case_process_title": "Методология и Процесс",
       "uz_case_process_text": "Собрано и проанализировано 373 000 сообщений в соцсетях и СМИ с января по апрель 2025 года. Проведена автоматическая очистка от спама. С помощью NLP-методов классифицированы основные темы обсуждений (зарплаты, вакансии, требования) и соотношение языков (узбекский/русский).",
       "uz_case_results_title": "Результаты и Влияние",
-      "uz_case_results_text": "Выявлен резкий разрыв между зарплатными ожиданиями соискателей и предложениями бизнеса. 32% соискателей используют соцсети (в первую очередь Telegram-каналы вроде CareerUz, UzDev Jobs) как основной инструмент найма. Сформированы рекомендации по выстраиванию бренда работодателя в регионе."
+      "uz_case_results_text": "Выявлен резкий разрыв между зарплатными ожиданиями соискателей и предложениями бизнеса. 32% соискателей используют соцсети (в первую очередь Telegram-каналы вроде CareerUz, UzDev Jobs) как основной инструмент найма. Сформированы рекомендации по выстраиванию бренда работодателя в регионе.",
+      "contact_email": "egor@theyoungest.ru",
+      "contact_phone": "89200700406",
+      "contact_location": "Нижний Новгород, РФ",
+      "contact_telegram": "@nonenewfriends",
+      "kazakhstan_case": "Кейс: GTM в Казахстане",
+      "kazakhstan_case_title": "Вывод бренда бакалеи на рынок Казахстана",
+      "kazakhstan_case_tab": "Кейс: Казахстан",
+      "kaz_case_context_title": "Ситуация и Задача",
+      "kaz_case_context_text": "Вывод нового локального B2C-бренда бакалеи на рынок Казахстана в условиях доминирования крупных импортных марок. Полки супермаркетов заняты импортом, байеры сетей минимизируют риски и не берут новичков, а потребители покупают привычное на автопилоте, считывая местный бренд как дешевый компромисс.",
+      "kaz_case_stack_title": "Фреймворк C.O.M.P.A.S.S.",
+      "kaz_case_stack_text": "Стратегия построена на авторском фреймворке C.O.M.P.A.S.S. Включает Commercial Orientation (цифровой комплаенс в НКТ, ТОО на общем режиме, 3 месяца тест-буста без листинга), Market Planning (100% чистый продукт на швейцарском оборудовании Булер, позиционирование 'Доступного Правильного Питания') и Strategic Scalability.",
+      "kaz_case_process_title": "Воронка и Подталкивание",
+      "kaz_case_process_text": "Внедрена двухфазная воронка. Фаза 1 (Pull) — онлайн-тесты трафика (Meta, TikTok) и e-com продаж для упаковки цифр в Partner Kit. Фаза 2 (Push) — экспансия в ритейл с доказанной оборачиваемостью. Для обхода автопилота разработана упаковка с прозрачным окном (чистота крупы) и трейд-маркетинг nudging.",
+      "kaz_case_results_title": "MarTech и Результаты",
+      "kaz_case_results_text": "Спроектирован Python-парсер цифровых полок доставки (Magnum Go, Arbuz) для динамического ценообразования и WhatsApp API вебхуки для автоматического сбора отзывов. Стратегия успешно защищена перед заказчиком и находится на этапе запуска инфраструктуры продаж."
     }
   }
 };

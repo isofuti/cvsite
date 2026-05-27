@@ -21,6 +21,7 @@ export const PhoneInterface = () => {
   const [resumeActiveTab, setResumeActiveTab] = useState('view');
   const [caseActiveTab, setCaseActiveTab] = useState('context');
   const [uzCaseActiveTab, setUzCaseActiveTab] = useState('context');
+  const [kazCaseActiveTab, setKazCaseActiveTab] = useState('context');
   const [selectedCaseId, setSelectedCaseId] = useState(null);
   const [showCookieNotice, setShowCookieNotice] = useState(false);
 
@@ -243,11 +244,15 @@ export const PhoneInterface = () => {
                       </div>
                       <div className="wp-list-item">
                         <div className="wp-list-subtitle">email</div>
-                        <div className="wp-list-title">egor.khromov@example.com</div>
+                        <div className="wp-list-title">egor@theyoungest.ru</div>
                       </div>
                       <div className="wp-list-item">
-                        <div className="wp-list-subtitle">локация</div>
-                        <div className="wp-list-title">Москва, Россия</div>
+                        <div className="wp-list-subtitle">{i18n.language === 'ru' ? 'телефон' : 'phone'}</div>
+                        <div className="wp-list-title">+7 920 070 0406</div>
+                      </div>
+                      <div className="wp-list-item">
+                        <div className="wp-list-subtitle">{i18n.language === 'ru' ? 'локация' : 'location'}</div>
+                        <div className="wp-list-title">{t('contact_location')}</div>
                       </div>
                     </div>
                   )
@@ -449,7 +454,7 @@ export const PhoneInterface = () => {
         return (
           <div className="wp-hub">
             <div className="wp-hub-header">
-              <div className="wp-hub-meta">tenchat блог</div>
+              <div className="wp-hub-meta">theyoungest.ru/blog</div>
               <div className="wp-hub-title">{t('blog_title')}</div>
             </div>
             
@@ -744,10 +749,12 @@ export const PhoneInterface = () => {
                         </div>
                       </div>
                       <div className="wp-list-item">
-                        <div className="wp-list-title">Контакты</div>
+                        <div className="wp-list-title">{i18n.language === 'ru' ? 'Контакты' : 'Contacts'}</div>
                         <div className="wp-list-desc">
                           Telegram: @nonenewfriends<br />
-                          Email: egor.khromov@example.com
+                          Email: egor@theyoungest.ru<br />
+                          {i18n.language === 'ru' ? 'Телефон' : 'Phone'}: +7 920 070 0406<br />
+                          {i18n.language === 'ru' ? 'Локация: Нижний Новгород, РФ' : 'Location: Nizhny Novgorod, RF'}
                         </div>
                       </div>
                     </div>
@@ -840,6 +847,30 @@ export const PhoneInterface = () => {
                     {i18n.language === 'ru' 
                       ? 'Анализ 373 тыс. сообщений в соцсетях для выявления трендов найма и поведения соискателей.' 
                       : 'Analysis of 373K social media messages to reveal recruitment trends and candidate behavior.'}
+                  </p>
+                </div>
+
+                {/* Kazakhstan Grocery GTM Case */}
+                <div 
+                  onClick={() => { playSound('open'); setSelectedCaseId('kazakhstan'); }}
+                  style={{ 
+                    background: 'rgba(255,255,255,0.05)', 
+                    padding: '16px', 
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '4px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <div style={{ fontSize: '11px', color: 'var(--wp-accent-light)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                    {t('case_label')}
+                  </div>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#fff', margin: 0 }}>
+                    {t('kazakhstan_case_title') || 'Вывод бренда в Казахстане'}
+                  </h3>
+                  <p style={{ fontSize: '12px', color: 'var(--wp-subtle)', marginTop: '6px', marginBottom: 0, lineHeight: 1.4 }}>
+                    {i18n.language === 'ru' 
+                      ? 'GTM-стратегия вывода локального B2C-бренда в Казахстане на базе C.O.M.P.A.S.S.' 
+                      : 'GTM strategy for a local B2C brand in Kazakhstan using C.O.M.P.A.S.S. framework.'}
                   </p>
                 </div>
               </div>
@@ -1053,6 +1084,65 @@ export const PhoneInterface = () => {
                             </div>
                           </div>
                         </div>
+                      </div>
+                    )
+                  }
+                ]}
+              />
+            </div>
+          );
+        } else if (selectedCaseId === 'kazakhstan') {
+          return (
+            <div className="wp-hub">
+              <div className="wp-hub-header" onClick={() => { playSound('close'); setSelectedCaseId(null); }} style={{ cursor: 'pointer' }}>
+                <div className="wp-hub-meta" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ChevronLeft size={14} /> {t('back_to_list') || 'назад к списку'}
+                </div>
+                <div className="wp-hub-title" style={{ fontSize: '18px' }}>{t('kazakhstan_case_tab') || 'Казахстан'}</div>
+              </div>
+              <PhonePivot
+                activeTabId={kazCaseActiveTab}
+                onTabChange={setKazCaseActiveTab}
+                tabs={[
+                  {
+                    id: 'context',
+                    title: i18n.language === 'ru' ? 'задача' : 'challenge',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '16px', fontWeight: 600, margin: 0 }}>{t('kaz_case_context_title')}</h3>
+                        <p>{t('kaz_case_context_text')}</p>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', borderLeft: '3px solid var(--wp-accent)', fontSize: '11px', marginTop: '6px' }}>
+                          <strong>{i18n.language === 'ru' ? 'Вызов:' : 'Challenge:'}</strong> {i18n.language === 'ru' ? 'Пробиться сквозь автопилот покупателей бакалеи и войти на забитые импортом полки ритейла.' : 'Break through grocery customer autopilot and win space on retail shelves heavily dominated by imports.'}
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'compass',
+                    title: i18n.language === 'ru' ? 'компас' : 'compass',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '12.5px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '16px', fontWeight: 600, margin: 0 }}>C.O.M.P.A.S.S.</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          <div><strong>C (Commercial):</strong> {i18n.language === 'ru' ? 'Регистрация SKU в НКТ, ТОО на ОУР, 3 мес без листинга.' : 'SKU in National Product Catalog, LLP entity, 3-month fee-free trial.'}</div>
+                          <div><strong>O (Optimal):</strong> {i18n.language === 'ru' ? 'УТП: 100% чистый продукт на швейцарских станках Bühler.' : 'USP: 100% clean product processed on Swiss Bühler machinery.'}</div>
+                          <div><strong>M (Market):</strong> {i18n.language === 'ru' ? 'Гибридный Funnel: онлайн-валидация спроса (Pull) -> ритейл (Push).' : 'Hybrid Funnel: online validation (Pull) -> retail listing (Push).'}</div>
+                          <div><strong>P (Psychology):</strong> {i18n.language === 'ru' ? 'Упаковка с прозрачным окном ломает автопилот.' : 'Transparent window packaging breaks consumer autopilot.'}</div>
+                          <div><strong>S (Scale):</strong> {i18n.language === 'ru' ? 'Python e-shelf парсер в Magnum Go/Arbuz + WhatsApp ORM.' : 'Python e-shelf Magnum/Arbuz price scraper + WhatsApp ORM loops.'}</div>
+                        </div>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'roadmap',
+                    title: i18n.language === 'ru' ? 'план' : 'roadmap',
+                    content: (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '12.5px', lineHeight: 1.4, maxHeight: '100%', overflowY: 'auto' }}>
+                        <h3 style={{ color: 'var(--wp-accent-light)', fontSize: '16px', fontWeight: 600, margin: 0 }}>Roadmap</h3>
+                        <div>• <strong>{i18n.language === 'ru' ? 'Июнь:' : 'June:'}</strong> {i18n.language === 'ru' ? 'E-com Pull-тесты трафика.' : 'E-com Pull tests & traffic validation.'}</div>
+                        <div>• <strong>{i18n.language === 'ru' ? 'Июль-Август:' : 'July-Aug:'}</strong> {i18n.language === 'ru' ? 'Отгрузка в 10-15 тест-точек + гео-таргет.' : 'Controlled trial batches in 10-15 stores.'}</div>
+                        <div>• <strong>{i18n.language === 'ru' ? 'Сентябрь:' : 'Sept:'}</strong> {i18n.language === 'ru' ? 'Масс-ритейл листинг + выкладка.' : 'Mass retail listing & pallet placements.'}</div>
+                        <div>• <strong>{i18n.language === 'ru' ? 'Октябрь-Декабрь:' : 'Oct-Dec:'}</strong> {i18n.language === 'ru' ? 'Удержание, ORM-петли и контракты.' : 'Retention analysis & WhatsApp API ORM setup.'}</div>
                       </div>
                     )
                   }

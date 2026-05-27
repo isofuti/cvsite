@@ -11,6 +11,7 @@ import { TelegramApp } from './components/TelegramApp';
 import { PhoneInterface } from './components/PhoneInterface';
 import { BrandCaseApp } from './components/BrandCaseApp';
 import { UzbekistanCaseApp } from './components/UzbekistanCaseApp';
+import { KazakhstanCaseApp } from './components/KazakhstanCaseApp';
 import { SafariApp } from './components/SafariApp';
 import { AdminPanel } from './components/AdminPanel';
 import { CapabilitiesApp } from './components/CapabilitiesApp';
@@ -35,7 +36,8 @@ const getSubApps = (t) => [
   { id: 'daynet', title: 'DayNet', icon: Folder, color: '#007aff' },
   { id: 'freelance', title: 'Freelance', icon: Folder, color: '#007aff' },
   { id: 'case_study', title: t('brand_case') || 'Brand Case Study', icon: BarChart3, color: '#af52de' },
-  { id: 'uzbekistan_case', title: t('uzbekistan_case') || 'Uzbekistan Labor Market', icon: BarChart3, color: '#34c759' }
+  { id: 'uzbekistan_case', title: t('uzbekistan_case') || 'Uzbekistan Labor Market', icon: BarChart3, color: '#34c759' },
+  { id: 'kazakhstan_case', title: t('kazakhstan_case') || 'Kazakhstan Grocery GTM', icon: BarChart3, color: '#ff9500' }
 ];
 
 function App() {
@@ -282,12 +284,20 @@ function App() {
                 {t('uzbekistan_case_tab') || 'Uzbekistan Case'}
               </div>
             </div>
+            <div style={{ textAlign: 'center', cursor: 'pointer', width: '80px' }} onDoubleClick={() => openWindow('kazakhstan_case')}>
+              <BarChart3 size={64} color="#ff9500" />
+              <div style={{ marginTop: '8px', fontSize: '12px', fontWeight: 500, lineHeight: 1.2 }}>
+                {t('kazakhstan_case_tab') || 'Kazakhstan Case'}
+              </div>
+            </div>
           </div>
         );
       case 'case_study':
         return <BrandCaseApp />;
       case 'uzbekistan_case':
         return <UzbekistanCaseApp />;
+      case 'kazakhstan_case':
+        return <KazakhstanCaseApp />;
       case 'contact':
         return <TelegramApp />;
       case 'snake':
