@@ -79,6 +79,55 @@ export const PhoneInterface = () => {
     }
   }, [showCookieNotice]);
 
+  // Dynamic JSON-LD Schema Injection for AI search engines & crawlers (mobile simulated browser)
+  useEffect(() => {
+    if (!wpSelectedPost) return;
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = `ld-blog-mobile-${wpSelectedPost.id}`;
+
+    let isoDate = '2026-05-10T12:00:00+03:00';
+    if (wpSelectedPost.date) {
+      const parts = wpSelectedPost.date.split('.');
+      if (parts.length === 3) {
+        isoDate = `${parts[2]}-${parts[1]}-${parts[0]}T12:00:00+03:00`;
+      }
+    }
+
+    const payload = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": (i18n.language === 'ru' ? wpSelectedPost.title_ru : wpSelectedPost.title_en) || wpSelectedPost.title || '',
+      "datePublished": isoDate,
+      "author": {
+        "@type": "Person",
+        "name": "Егор Хромов"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Егор Хромов"
+      },
+      "description": i18n.language === 'ru'
+        ? (wpSelectedPost.text_ru ? wpSelectedPost.text_ru.substring(0, 160).replace(/\n/g, ' ') + '...' : '')
+        : (wpSelectedPost.text_en ? wpSelectedPost.text_en.substring(0, 160).replace(/\n/g, ' ') + '...' : ''),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://theyoungest.ru/blog/${wpSelectedPost.id}`
+      }
+    };
+
+    script.text = JSON.stringify(payload);
+    document.head.appendChild(script);
+
+    return () => {
+      const existing = document.getElementById(`ld-blog-mobile-${wpSelectedPost.id}`);
+      if (existing) {
+        document.head.removeChild(existing);
+      }
+    };
+  }, [wpSelectedPost, i18n.language]);
+
   const formatShortTime = (date) => {
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');

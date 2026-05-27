@@ -32,6 +32,57 @@ export const SafariApp = () => {
     loadPosts();
   }, []);
 
+  // Dynamic JSON-LD Schema Injection for AI search engines & crawlers
+  useEffect(() => {
+    if (!selectedPost) return;
+
+    // Create script element
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = `ld-blog-desktop-${selectedPost.id}`;
+
+    // Helper to extract date format (DD.MM.YYYY to YYYY-MM-DD)
+    let isoDate = '2026-05-10T12:00:00+03:00';
+    if (selectedPost.date) {
+      const parts = selectedPost.date.split('.');
+      if (parts.length === 3) {
+        isoDate = `${parts[2]}-${parts[1]}-${parts[0]}T12:00:00+03:00`;
+      }
+    }
+
+    const payload = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": (i18n.language === 'ru' ? selectedPost.title_ru : selectedPost.title_en) || selectedPost.title || '',
+      "datePublished": isoDate,
+      "author": {
+        "@type": "Person",
+        "name": "Егор Хромов"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Егор Хромов"
+      },
+      "description": i18n.language === 'ru'
+        ? (selectedPost.text_ru ? selectedPost.text_ru.substring(0, 160).replace(/\n/g, ' ') + '...' : '')
+        : (selectedPost.text_en ? selectedPost.text_en.substring(0, 160).replace(/\n/g, ' ') + '...' : ''),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://theyoungest.ru/blog/${selectedPost.id}`
+      }
+    };
+
+    script.text = JSON.stringify(payload);
+    document.head.appendChild(script);
+
+    return () => {
+      const existing = document.getElementById(`ld-blog-desktop-${selectedPost.id}`);
+      if (existing) {
+        document.head.removeChild(existing);
+      }
+    };
+  }, [selectedPost, i18n.language]);
+
   const handlePostClick = (post) => {
     playSound('open');
     setSelectedPost(post);
